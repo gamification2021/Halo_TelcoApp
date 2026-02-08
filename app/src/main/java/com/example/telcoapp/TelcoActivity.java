@@ -94,8 +94,8 @@ public class TelcoActivity extends BaseActivity {
                     R.drawable.samsung_galaxy
             );
             List<String> caps = Arrays.asList(
-                    "Here Comes The iPhone 17  \n Bundle with Halo+ plan",
-                    "Galaxy 24 Ultra  \n Upgrade with Halo+ plan"
+                    "Here Comes The iPhone 17  \n Bundle with IM3",
+                    "Galaxy 24 Ultra  \n Upgrade with IM3"
             );
             TelcoBannerAdapter pagerAdapter = new TelcoBannerAdapter(this, images, caps);
             bannerPager.setAdapter(pagerAdapter);

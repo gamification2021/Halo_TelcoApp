@@ -24,7 +24,7 @@
                 android:id="@+id/titleLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Halo+ to IM3"
+                android:text="IM3"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 android:textSize="22sp" />
