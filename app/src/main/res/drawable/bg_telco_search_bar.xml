@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Gradient border -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="28dp"/>
+            <gradient
+                android:startColor="#E39BFF"
+                android:endColor="@color/telco_screen_cta"
+                android:angle="0"/>
+        </shape>
+    </item>
+    <!-- Inner dark fill to create border effect -->
+    <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="26dp"/>
+            <solid android:color="#1b1b1b"/>
+        </shape>
+    </item>
+</layer-list>

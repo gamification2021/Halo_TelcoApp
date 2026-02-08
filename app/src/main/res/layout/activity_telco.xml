@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/telco_screen_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/titleLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Halo+ to IM3"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="22sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/cart"
+                android:background="@drawable/cart_white" />
+
+    </LinearLayout>
+
+        <!-- Banner copy -->
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Life is Busy Enough,\nWhat You Need is IM3 Simple Solution"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:lineSpacingExtra="4dp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/subheading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Monetize and own your audience with branded mobile plans. Stand out from the crowd and make your mark in the digital world"
+            android:textColor="#B3FFFFFF"
+            android:textSize="14sp"
+            android:paddingBottom="16dp" />
+
+        <FrameLayout
+            android:id="@+id/ctaContainer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_telco_cta"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:id="@+id/cta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:id="@+id/ctaText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Find Stores To Collect Your New Sim"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <FrameLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/drawable_white_circle">
+                <ImageView
+                    android:id="@+id/btnSearchIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_search"
+                    android:tint="@color/telco_screen_cta"/>
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Slidable banner with indicator -->
+        <LinearLayout
+            android:id="@+id/bannerSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/bannerPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/bannerDots"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+        <!-- Quick Actions Row -->
+        <LinearLayout
+            android:id="@+id/quickActionsRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_telco_tile"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/telco_esim"
+                    android:src="@drawable/esim"
+                    android:tint="#5FB8A6"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recharge"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="12sp"
+                    android:paddingTop="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_telco_tile"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/telco_sim_card"
+                    android:src="@drawable/sim_card"
+                    android:tint="#5FB8A6"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buy Sim"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="12sp"
+                    android:paddingTop="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_telco_tile"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/telco_calendar"
+                    android:src="@drawable/calendar_telco"
+                    android:tint="#5FB8A6"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Packs"
+                    android:textColor="#B3FFFFFF"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    android:paddingTop="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_telco_tile"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/offers"
+                    android:id="@+id/telco_offers"
+                    android:tint="#5FB8A6"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Offers"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="12sp"
+                    android:paddingTop="6dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        
+        <!-- Featured Items Section -->
+        <LinearLayout
+            android:id="@+id/featuredHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Featured Items"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See all ↗"
+                android:textSize="12sp"
+                android:textColor="#B3FFFFFF"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/featuredGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:nestedScrollingEnabled="false"
+            android:paddingBottom="4dp"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

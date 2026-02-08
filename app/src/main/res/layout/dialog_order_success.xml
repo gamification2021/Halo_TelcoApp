@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/telco_screen_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/successHero"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/crown_telco"/>
+
+        <TextView
+            android:id="@+id/titleLine1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textColor="#FFFFFFFF"/>
+
+        <TextView
+            android:id="@+id/titleLine2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Successful"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:layout_gravity="center"
+            android:textColor="@color/telco_screen_cta"/>
+
+        <TextView
+            android:id="@+id/successSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Climb the stairs in one click, get to the top and get prizes."
+            android:textSize="14sp"
+            android:layout_marginHorizontal="50dp"
+            android:textAlignment="center"
+            android:textColor="#EEFFFFFF"
+            android:layout_marginTop="8dp"/>
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="16dp"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnSuccessDone"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:background="@drawable/bg_telco_cta"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:tint="#FFFFFFFF"/>
+
+</FrameLayout>
