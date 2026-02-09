@@ -14,6 +14,8 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.telcoapp.R;
 import com.example.telcoapp.TelcoActivity;
+import com.example.telcoapp.utils.sharedPref.PrefKeys;
+import com.example.telcoapp.utils.sharedPref.PrefUtils;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -24,10 +26,17 @@ import java.util.Map;
 public class MessagingServices extends FirebaseMessagingService {
 
     private static final String TAG = "FCM Message";
+    public static String FCMTOKEN;
     Intent intent;
 
     public MessagingServices() {
         super();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        PrefUtils.getInstance(getApplicationContext());
     }
 
     @Override
@@ -99,7 +108,7 @@ public class MessagingServices extends FirebaseMessagingService {
     }
 
     public void sendRegistrationToServer(String token) {
-        //PrefUtils.getInstance(getApplicationContext()).setValue(PrefKeys.FCM_TOKEN, token);
+        PrefUtils.getInstance(getApplicationContext()).setValue(PrefKeys.FCM_TOKEN, token);
         Log.e("FCM TOKEN", token);
     }
 }
