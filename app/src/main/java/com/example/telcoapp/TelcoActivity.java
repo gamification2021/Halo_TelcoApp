@@ -21,6 +21,7 @@ import com.example.telcoapp.adapter.TelcoBannerAdapter;
 import com.example.telcoapp.adapter.TelcoFeaturedAdapter;
 import com.example.telcoapp.model.CartItem;
 import com.example.telcoapp.model.Reward;
+import com.example.telcoapp.recharge.PointTransferActivity;
 import com.sixdee.cvm.sdk;
 
 import java.util.ArrayList;
@@ -287,7 +288,7 @@ public class TelcoActivity extends BaseActivity {
         // Quick actions -> TelcoOffersActivity
         if (esim != null) {
             esim.setOnClickListener(v -> {
-                Intent i = new Intent(TelcoActivity.this, TelcoOffersActivity.class);
+                Intent i = new Intent(TelcoActivity.this, PointTransferActivity.class);
                 i.putExtra(TelcoOffersActivity.EXTRA_SECTION, "esim");
                 startActivity(i);
             });
