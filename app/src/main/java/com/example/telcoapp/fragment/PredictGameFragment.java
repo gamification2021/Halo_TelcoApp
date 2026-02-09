@@ -15,8 +15,6 @@ import com.example.telcoapp.R;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.Unbinder;
 
 public class PredictGameFragment extends Fragment {
 

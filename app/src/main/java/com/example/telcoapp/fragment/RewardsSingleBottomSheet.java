@@ -33,26 +33,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class RewardsSingleBottomSheet extends BottomSheetDialogFragment {
 
-    Unbinder unbinder;
+
     Reward reward;
-    @BindView(R.id.back)
+
     CardView back;
-    @BindView(R.id.rewardsSinglePage)
+
     ImageView rewardsSinglePage;
-    @BindView(R.id.title)
+
     TextView title;
-    @BindView(R.id.points)
+
     TextView points;
-    @BindView(R.id.description)
+
     TextView description;
-    @BindView(R.id.redeem)
+
     Button redeem;
     redirectFragment redirectFragment;
     boolean isQrScanner;
@@ -87,7 +83,18 @@ public class RewardsSingleBottomSheet extends BottomSheetDialogFragment {
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);
         View contentView = View.inflate(getContext(), R.layout.rewards_single_bottom_sheet, null);
-        unbinder = ButterKnife.bind(this, contentView);
+        back = contentView.findViewById(R.id.back);
+
+        rewardsSinglePage = contentView.findViewById(R.id.rewardsSinglePage);
+
+        title = contentView.findViewById(R.id.title);
+
+        points = contentView.findViewById(R.id.points);
+
+        description = contentView.findViewById(R.id.description);
+
+        redeem = contentView.findViewById(R.id.redeem);
+
         dialog.setContentView(contentView);
         dialog.setOnKeyListener(new BottomSheetBackDismissListener());
         makeBottomSheetFullScreen(getActivity(), mBottomSheetBehaviorCallback, contentView);
@@ -114,6 +121,51 @@ public class RewardsSingleBottomSheet extends BottomSheetDialogFragment {
             redeem.setText("Buy");
         }
         back.setOnClickListener(view -> dismiss());
+        redeem.setOnClickListener(view -> {
+            if(specialData == null) {
+                rewardArrayList.add(reward);
+                if (count != null)
+                    count.setText(String.valueOf(rewardArrayList.size()));
+                totalPoints = totalPoints + reward.getPoints();
+                if (redirectFragment != null) {
+                    redirectFragment.onRewardAdded();
+                }
+
+                //TODO:UnComment
+                Event event = new Event();
+                ArrayList<CustomEvent> customEvents = new ArrayList<>(
+                        Arrays.asList(
+                                new CustomEvent("reward_name", reward.getProgram()),
+                                new CustomEvent("reward_description", reward.getDescription()),
+                                new CustomEvent("reward_point", reward.getPoints() + "")
+                        )
+                );
+                event.setCustomEvent(customEvents);
+                EventManager.sendEvent("add_to_cart", prefUtils.getStringValue(PrefKeys.MSISDN, "0"), event);
+
+//        int totalPoints = prefUtils.getIntValue(  PrefKeys.TOTAL_POINTS, 0);
+//        if(totalPoints > reward.getPoints()) {
+//            totalPoints = totalPoints - reward.getPoints();
+//            prefUtils.setValue(PrefKeys.TOTAL_POINTS, totalPoints);
+//            PointsTransactionActivity.transactions.add(new Transactions(reward.getDescription(),
+//                    ContextCompat.getDrawable(getActivity(), R.drawable.transaction_success), "SUCCESS", "-50",
+//                    "minus"));
+//            NewHomeFragment.totalPointsText.setText(String.valueOf(totalPoints));
+//        }
+//        else {
+//            prefUtils.setValue(PrefKeys.TOTAL_POINTS, 2400);
+//            NewHomeFragment.totalPointsText.setText("2400");
+//            Toast.makeText(getActivity(), "You do not have sufficent points to play this game", Toast.LENGTH_SHORT).show();
+//        }
+                dismiss();
+
+                if (isQrScanner) {
+                    getActivity().finish();
+                }
+            } else {
+                verificationDialog();
+            }
+        });
     }
 
     public void setRewardData(Reward reward) {
@@ -132,52 +184,7 @@ public class RewardsSingleBottomSheet extends BottomSheetDialogFragment {
         this.specialData = specialData;
     }
 
-    @OnClick(R.id.redeem)
-    public void onViewClicked() {
-        if(specialData == null) {
-            rewardArrayList.add(reward);
-            if (count != null)
-                count.setText(String.valueOf(rewardArrayList.size()));
-            totalPoints = totalPoints + reward.getPoints();
-            if (redirectFragment != null) {
-                redirectFragment.onRewardAdded();
-            }
 
-            //TODO:UnComment
-            Event event = new Event();
-            ArrayList<CustomEvent> customEvents = new ArrayList<>(
-                    Arrays.asList(
-                            new CustomEvent("reward_name", reward.getProgram()),
-                            new CustomEvent("reward_description", reward.getDescription()),
-                            new CustomEvent("reward_point", reward.getPoints() + "")
-                    )
-            );
-            event.setCustomEvent(customEvents);
-            EventManager.sendEvent("add_to_cart", prefUtils.getStringValue(PrefKeys.MSISDN, "0"), event);
-
-//        int totalPoints = prefUtils.getIntValue(  PrefKeys.TOTAL_POINTS, 0);
-//        if(totalPoints > reward.getPoints()) {
-//            totalPoints = totalPoints - reward.getPoints();
-//            prefUtils.setValue(PrefKeys.TOTAL_POINTS, totalPoints);
-//            PointsTransactionActivity.transactions.add(new Transactions(reward.getDescription(),
-//                    ContextCompat.getDrawable(getActivity(), R.drawable.transaction_success), "SUCCESS", "-50",
-//                    "minus"));
-//            NewHomeFragment.totalPointsText.setText(String.valueOf(totalPoints));
-//        }
-//        else {
-//            prefUtils.setValue(PrefKeys.TOTAL_POINTS, 2400);
-//            NewHomeFragment.totalPointsText.setText("2400");
-//            Toast.makeText(getActivity(), "You do not have sufficent points to play this game", Toast.LENGTH_SHORT).show();
-//        }
-            dismiss();
-
-            if (isQrScanner) {
-                getActivity().finish();
-            }
-        } else {
-            verificationDialog();
-        }
-    }
 
     public void verificationDialog() {
         Dialog dialog = new Dialog(Objects.requireNonNull(getActivity()), R.style.Theme_TelcoApp);

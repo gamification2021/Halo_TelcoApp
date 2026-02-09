@@ -51,12 +51,12 @@ public class TelcoActivity extends BaseActivity {
         Log.v("6DLOG", "VIEW_PAGE \t\tItem Added to Cart productId 0 value 1 INR");
 
 
-        String androidId = Settings.Secure.getString(
-                getContentResolver(),
-                Settings.Secure.ANDROID_ID
-        );
-
-        Log.e("TAG", "onCreate: "+androidId);
+//        String androidId = Settings.Secure.getString(
+//                getContentResolver(),
+//                Settings.Secure.ANDROID_ID
+//        );
+//        Log.e("TAG", "onCreate: "+androidId);
+//        AdIdHelper.getAdId(this);
 //        View t1 = findViewById(R.id.tile1);
 //        View t2 = findViewById(R.id.tile2);
 //        View t3 = findViewById(R.id.tile3);

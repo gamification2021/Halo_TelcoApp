@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "951158666496",
+    "project_id": "telcoapp-aa58c",
+    "storage_bucket": "telcoapp-aa58c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951158666496:android:a416f874e5181a01c5afe5",
+        "android_client_info": {
+          "package_name": "com.example.telcoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpUeSzcTH9zwZRZC6Hgh8M08M1T9-MLVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

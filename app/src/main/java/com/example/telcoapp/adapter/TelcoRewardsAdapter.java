@@ -16,8 +16,7 @@ import com.example.telcoapp.model.Reward;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
 
 public class TelcoRewardsAdapter extends RecyclerView.Adapter<TelcoRewardsAdapter.ViewHolder> {
 
@@ -56,13 +55,14 @@ public class TelcoRewardsAdapter extends RecyclerView.Adapter<TelcoRewardsAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.title)
+
         TextView title;
-        @BindView(R.id.descrition)
+
         TextView descrition;
         ViewHolder(@NonNull View view) {
             super(view);
-            ButterKnife.bind(this, view);
+            title = view.findViewById(R.id.title);
+            descrition = view.findViewById(R.id.descrition);
         }
     }
 }
