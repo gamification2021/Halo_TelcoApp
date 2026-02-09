@@ -82,4 +82,5 @@ dependencies {
     implementation("com.google.firebase:firebase-core:21.1.1")
     implementation("com.google.firebase:firebase-messaging:24.1.1")
     implementation("com.android.installreferrer:installreferrer:2.2")
+    implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
 }

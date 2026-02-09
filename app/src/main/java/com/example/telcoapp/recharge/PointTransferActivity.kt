@@ -156,7 +156,7 @@ class PointTransferActivity : AppCompatActivity() {
 
            // showVerificationDialog()
             val msg = "Recharge of Rp ${binding.pointsInput.text} successfully completed for ${binding.phoneNumberInput.text}."
-            Log.d("RECHARGE_MSG", "setupProceedButton: $msg")
+            Log.v("6DLOG", "RECHARGE \t\t$msg")
             sdk.sendEvent("RECHARGE",msg )
             showSuccessDialog()
         }

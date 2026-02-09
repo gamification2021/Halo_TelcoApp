@@ -2,6 +2,7 @@ package com.example.telcoapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,6 +58,7 @@ public class TelcoDetailActivity extends BaseActivity {
                     // TODO: Uncomment this
                     String msg = "Item Added to Cart " + t + " and " + String.format("Rp %.2f", p);
                     sdk.INSTANCE.sendEvent("ADD_CART", msg);
+                    Log.v("6DLOG", "ADD_CART \t\t"+msg);
                 } catch (Exception ignore) {}
                 Intent i = new Intent(TelcoDetailActivity.this, TelcoCartActivity.class);
                 startActivity(i);

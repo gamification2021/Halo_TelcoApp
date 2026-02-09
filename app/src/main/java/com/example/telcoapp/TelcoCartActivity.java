@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
@@ -65,6 +66,7 @@ public class TelcoCartActivity extends BaseActivity {
                 }
                 try {
                     sdk.INSTANCE.sendEvent("CHECKOUT", "Checked out " + sb.toString());
+                    Log.v("6DLOG", "CHECKOUT \t\tChecked out " + sb.toString());
                 } catch (Exception ignore) {}
 
                 CartManager.getInstance().clear();

@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.telcoapp.adapter.TelcoSearchAdapter;
+import com.sixdee.cvm.sdk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,6 +119,8 @@ public class TelcoOffersActivity extends BaseActivity {
 
         btnCancel.setOnClickListener(v -> dialog.dismiss());
         btnConfirm.setOnClickListener(v -> {
+            sdk.INSTANCE.sendEvent("CHECKOUT", "Checked out " + item.title);
+            Log.v("6DLOG", "CHECKOUT \t\tChecked out " + item.title);
             dialog.dismiss();
             showSuccessDialog();
         });

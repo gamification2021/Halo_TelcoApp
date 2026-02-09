@@ -2,6 +2,7 @@ package com.example.telcoapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,7 @@ public class TelcoFeaturedAdapter extends RecyclerView.Adapter<TelcoFeaturedAdap
                 // TODO: Uncomment this
                 String msg = "Item Added to Cart " + it.getTitle() + " and " + String.format("Rp %.2f", it.getPrice());
                 sdk.INSTANCE.sendEvent("ADD_CART", msg);
+                Log.v("6DLOG","ADD_CART \t\t"+ msg);
             } catch (Exception ignore) {}
             Intent i = new Intent(context, TelcoCartActivity.class);
             context.startActivity(i);
