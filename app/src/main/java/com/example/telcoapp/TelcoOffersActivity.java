@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.telcoapp.adapter.TelcoSearchAdapter;
+import com.example.telcoapp.utils.EventTracker;
 import com.sixdee.cvm.sdk;
 
 import java.util.ArrayList;
@@ -119,7 +120,8 @@ public class TelcoOffersActivity extends BaseActivity {
 
         btnCancel.setOnClickListener(v -> dialog.dismiss());
         btnConfirm.setOnClickListener(v -> {
-            sdk.INSTANCE.sendEvent("CHECKOUT", "Checked out " + item.title);
+//            sdk.INSTANCE.sendEvent("CHECKOUT", "Checked out " + item.title);
+            EventTracker.getInstance().trackEvent("CHECKOUT", item.title, "Checked out " + item.title);
             Log.v("6DLOG", "CHECKOUT \t\tChecked out " + item.title);
             dialog.dismiss();
             showSuccessDialog();

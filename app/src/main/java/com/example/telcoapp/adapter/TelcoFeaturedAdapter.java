@@ -18,6 +18,7 @@ import com.example.telcoapp.TelcoCartActivity;
 import com.example.telcoapp.TelcoDetailActivity;
 import com.example.telcoapp.model.CartItem;
 import com.example.telcoapp.model.CartManager;
+import com.example.telcoapp.utils.EventTracker;
 import com.sixdee.cvm.sdk;
 
 import java.util.List;
@@ -63,7 +64,8 @@ public class TelcoFeaturedAdapter extends RecyclerView.Adapter<TelcoFeaturedAdap
             try {
                 // TODO: Uncomment this
                 String msg = "Item Added to Cart " + it.getTitle() + " and " + String.format("Rp %.2f", it.getPrice());
-                sdk.INSTANCE.sendEvent("ADD_CART", msg);
+//                sdk.INSTANCE.sendEvent("ADD_CART", msg);
+                EventTracker.getInstance().trackEvent("ADD_CART", it.getTitle(), msg);
                 Log.v("6DLOG","ADD_CART \t\t"+ msg);
             } catch (Exception ignore) {}
             Intent i = new Intent(context, TelcoCartActivity.class);

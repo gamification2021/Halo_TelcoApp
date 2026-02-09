@@ -25,6 +25,7 @@ import com.example.telcoapp.adapter.TelcoFeaturedAdapter;
 import com.example.telcoapp.model.CartItem;
 import com.example.telcoapp.model.Reward;
 import com.example.telcoapp.recharge.PointTransferActivity;
+import com.example.telcoapp.utils.EventTracker;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.sixdee.cvm.sdk;
 
@@ -52,19 +53,42 @@ public class TelcoActivity extends BaseActivity {
 
 
         sdk.INSTANCE.initialiseSDK(this);
-        sdk.INSTANCE.sendEvent("VIEW_PAGE", "Item Added to Cart productId 0 value 1 INR");
-
-
+//        sdk.INSTANCE.sendEvent("VIEW_PAGE", "Item Added to Cart productId 0 value 1 INR");
+        EventTracker.getInstance().trackEvent("VIEW_PAGE", "Home Page", "Item Added to Cart productId 0 value 1 INR");
 
         Log.v("6DLOG", "VIEW_PAGE \t\tItem Added to Cart productId 0 value 1 INR");
 
+        String androidId = Settings.Secure.getString(
+                getContentResolver(),
+                Settings.Secure.ANDROID_ID
+        );
+        Log.e("TAG", "onCreate: "+androidId);
 
-//        String androidId = Settings.Secure.getString(
-//                getContentResolver(),
-//                Settings.Secure.ANDROID_ID
-//        );
-//        Log.e("TAG", "onCreate: "+androidId);
-//        AdIdHelper.getAdId(this);
+        EventTracker.getInstance().initialize(
+                this,
+                "cpfamknnmpv",
+                "+919739696968"
+        );
+
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult() != null) {
+                String fcmToken = task.getResult();
+                Log.d("FCM_TOKEN", "Token: " + fcmToken);
+                
+                EventTracker.getInstance().trackEvent(
+                        "INIT_EVENT",
+                        "Session initialised",
+                        fcmToken
+                );
+            } else {
+                Log.e("FCM_TOKEN", "Failed to get token", task.getException());
+                EventTracker.getInstance().trackEvent(
+                        "INIT_EVENT",
+                        "Session initialised",
+                        "FCM token unavailable"
+                );
+            }
+        });
 //        View t1 = findViewById(R.id.tile1);
 //        View t2 = findViewById(R.id.tile2);
 //        View t3 = findViewById(R.id.tile3);

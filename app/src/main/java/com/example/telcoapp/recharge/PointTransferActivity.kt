@@ -157,14 +157,11 @@ class PointTransferActivity : AppCompatActivity() {
            // showVerificationDialog()
             val msg = "Recharge of Rp ${binding.pointsInput.text} successfully completed for ${binding.phoneNumberInput.text}."
             Log.v("6DLOG", "RECHARGE \t\t$msg")
-            sdk.sendEvent("RECHARGE",msg )
+//            sdk.sendEvent("RECHARGE",msg )
+            com.example.telcoapp.utils.EventTracker.getInstance().trackEvent("RECHARGE", "Points Transfer", msg)
             showSuccessDialog()
         }
     }
-
-
-
-
 
     private fun shareTransferDetails() {
         val phoneNumber = binding.phoneNumberInput.text.toString()

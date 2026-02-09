@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.telcoapp.model.CartItem;
 import com.example.telcoapp.model.CartManager;
+import com.example.telcoapp.utils.EventTracker;
 import com.sixdee.cvm.sdk;
 
 public class TelcoDetailActivity extends BaseActivity {
@@ -57,7 +58,8 @@ public class TelcoDetailActivity extends BaseActivity {
                 try {
                     // TODO: Uncomment this
                     String msg = "Item Added to Cart " + t + " and " + String.format("Rp %.2f", p);
-                    sdk.INSTANCE.sendEvent("ADD_CART", msg);
+//                    sdk.INSTANCE.sendEvent("ADD_CART", msg);
+                    EventTracker.getInstance().trackEvent("ADD_CART", t, msg);
                     Log.v("6DLOG", "ADD_CART \t\t"+msg);
                 } catch (Exception ignore) {}
                 Intent i = new Intent(TelcoDetailActivity.this, TelcoCartActivity.class);

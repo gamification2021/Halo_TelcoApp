@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.telcoapp.adapter.TelcoCartAdapter;
 import com.example.telcoapp.model.CartItem;
 import com.example.telcoapp.model.CartManager;
+import com.example.telcoapp.utils.EventTracker;
 import com.sixdee.cvm.sdk;
 
 import java.util.List;
@@ -65,7 +66,8 @@ public class TelcoCartActivity extends BaseActivity {
                     if (i < current.size() - 1) sb.append(", ");
                 }
                 try {
-                    sdk.INSTANCE.sendEvent("CHECKOUT", "Checked out " + sb.toString());
+//                    sdk.INSTANCE.sendEvent("CHECKOUT", "Checked out " + sb.toString());
+                    EventTracker.getInstance().trackEvent("CHECKOUT", "Cart Items", "Checked out " + sb.toString());
                     Log.v("6DLOG", "CHECKOUT \t\tChecked out " + sb.toString());
                 } catch (Exception ignore) {}
 
