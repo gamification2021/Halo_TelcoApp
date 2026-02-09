@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -24,6 +25,7 @@ import com.example.telcoapp.adapter.TelcoFeaturedAdapter;
 import com.example.telcoapp.model.CartItem;
 import com.example.telcoapp.model.Reward;
 import com.example.telcoapp.recharge.PointTransferActivity;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.sixdee.cvm.sdk;
 
 import java.util.ArrayList;
@@ -36,6 +38,8 @@ public class TelcoActivity extends BaseActivity {
     public static ArrayList<Reward> rewards = new ArrayList<>();
     public static int totalPoints = 0;
 
+    private  int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +50,12 @@ public class TelcoActivity extends BaseActivity {
             return insets;
         });
 
+
         sdk.INSTANCE.initialiseSDK(this);
         sdk.INSTANCE.sendEvent("VIEW_PAGE", "Item Added to Cart productId 0 value 1 INR");
+
+
+
         Log.v("6DLOG", "VIEW_PAGE \t\tItem Added to Cart productId 0 value 1 INR");
 
 
@@ -69,6 +77,7 @@ public class TelcoActivity extends BaseActivity {
         ImageView sim_card = findViewById(R.id.telco_sim_card);
         ImageView telco_offers = findViewById(R.id.telco_offers);
         ImageView cart = findViewById(R.id.cart);
+        TextView titleLogo = findViewById(R.id.titleLogo);
 
         androidx.recyclerview.widget.RecyclerView featuredGrid = findViewById(R.id.featuredGrid);
         ViewPager bannerPager = findViewById(R.id.bannerPager);
@@ -78,6 +87,15 @@ public class TelcoActivity extends BaseActivity {
             Intent i = new Intent(TelcoActivity.this, TelcoDetailActivity.class);
             startActivity(i);
         };
+
+        titleLogo.setOnClickListener(v -> {
+            if(count == 5){
+                count = 0;
+                Intent i = new Intent(TelcoActivity.this, TokenActivity.class);
+                startActivity(i);
+            }
+            count++;
+        });
 
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
